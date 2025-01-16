@@ -2,7 +2,7 @@
 
 from copy import deepcopy
 from dataclasses import dataclass
-from typing import Self, Union
+from typing import Self,Union
 
 
 @dataclass(init=False)
@@ -39,7 +39,7 @@ class StackBaseElement:
         """Check whether the end of self overlaps with the beginning of other."""
         if self.position <= other.position:
             msg = "Self and other overlap: "
-            msg += f"self.position: {self.position}, other.position: {other.position}"
+            msg += "self.position: {self.position}, other.position: {other.position}"
             return True, msg
         return False, ""
 
@@ -101,11 +101,11 @@ class StackFiniteFieldElement(StackNumber):
         """
         if extension_degree <= 0:
             msg = "The extension_degree must be a positive integer: "
-            msg += f"extension_degree: {extension_degree}"
+            msg += "extension_degree: {extension_degree}"
             raise ValueError(msg)
         if position >= 0 and position - extension_degree + 1 < 0:
             msg = "The field element does not fit in the stack: "
-            msg += f"position: {position}, extension_degree: {extension_degree}"
+            msg += "position: {position}, extension_degree: {extension_degree}"
             raise ValueError(msg)
 
         super().__init__(position, negate)
@@ -119,9 +119,7 @@ class StackFiniteFieldElement(StackNumber):
         """
         if self.position - self.extension_degree < other.position:
             msg = "Self and other overlap: "
-            msg += f"self.position: {self.position}, self.extension_degree: {self.extension_degree}, other.position: {
-                other.position
-                }"
+            msg += "self.position: {self.position}, self.extension_degree: {self.extension_degree}, other.position: { other.position }"
             return True, msg
         return False, ""
 
@@ -167,10 +165,10 @@ class StackEllipticCurvePoint:
         msg = "\n" * overlaps + msg  # Nice alignment
         if x.extension_degree != y.extension_degree:
             msg += "\nThe extension degrees of the x and y coordinates do not match: "
-            msg += f"x.extension_degree: {x.extension_degree}, y.extension_degree: {y.extension_degree}"
+            msg += "x.extension_degree: {x.extension_degree}, y.extension_degree: {y.extension_degree}"
             different_lengths = True
         if overlaps or different_lengths:
-            msg = f"Defining StackEllipticCurvePoint with \n x: {x}, \n y: {y}\nErrors:{msg}"
+            msg = "Defining StackEllipticCurvePoint with \n x: {x}, \n y: {y}\nErrors:{msg}"
             raise ValueError(msg)
 
         self.x = x
@@ -209,4 +207,4 @@ class StackEllipticCurvePoint:
         return out
 
 
-type StackElements = Union[StackBaseElement, StackNumber, StackFiniteFieldElement, StackEllipticCurvePoint]
+StackElements = Union[StackBaseElement, StackNumber, StackFiniteFieldElement, StackEllipticCurvePoint] 

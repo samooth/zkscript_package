@@ -113,7 +113,7 @@ def pick(position: int, n_elements: int) -> Script:
     """
     if position >= 0 and position < n_elements - 1:
         msg = "When positive, position must be at least equal to n_elements - 1: "
-        msg += f"position: {position}, n_elements: {n_elements}"
+        msg += "position: {position}, n_elements: {n_elements}"
         raise ValueError(msg)
 
     out = Script()
@@ -168,7 +168,7 @@ def roll(position: int, n_elements: int) -> Script:
     """
     if position >= 0 and position < n_elements - 1:
         msg = "When positive, position must be at least equal to n_elements - 1: "
-        msg += f"position: {position}, n_elements: {n_elements}"
+        msg += "position: {position}, n_elements: {n_elements}"
         raise ValueError(msg)
 
     if position == n_elements - 1:
@@ -324,11 +324,11 @@ def move(
         end_index = length
     if start_index < 0:
         msg = "Start index must be positive: "
-        msg += f"start_index {start_index}"
+        msg += "start_index {start_index}"
         raise ValueError(msg)
     if length < end_index:
         msg = "Moving more elements than self: "
-        msg += f"Self has {length} elements, end_index: {end_index}"
+        msg += "Self has {length} elements, end_index: {end_index}"
         raise ValueError(msg)
     return moving_function(position=stack_element.position - start_index, n_elements=end_index - start_index)
 
